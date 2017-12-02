@@ -1,5 +1,6 @@
-#include <stdio.h>
+//#include <stdio.h>
+#include "string.h"
 
 int print_str(char *str){
-	return puts(str);
+	write(1, str, strlen(str));
 }
