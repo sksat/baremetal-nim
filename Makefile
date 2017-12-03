@@ -4,7 +4,7 @@
 NIMSRC	= main.nim
 NIMOBJS	= nimcache/main.o nimcache/stdlib_system.o
 LNIMOBJS= libnim/print.o
-OBJS	= entry.o $(NIMOBJS) libnim/libnim.a
+OBJS	= $(NIMOBJS) libnim/libnim.a entry.o
 
 TARGET	= test
 
@@ -16,7 +16,7 @@ clean:
 	rm -rf $(LNIMOBJS)
 
 $(TARGET):$(OBJS)
-	gcc -o $@ $^
+	gcc -o $@ $^ -nostdlib
 
 entry.o : nimcache/main.h
 
