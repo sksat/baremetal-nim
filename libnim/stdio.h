@@ -10,7 +10,7 @@ typedef struct IO_FILE	FILE;
 #define fputs(str, f) 0
 #define ferror(f) 0
 #define fflush(f)
-#define exit(c)
+#define exit(c) _exit(c)
 
 typedef __off_t fpos_t;
 typedef __off_t off_t;

@@ -1,5 +1,7 @@
+CC	= gcc
+
 %.o:%.c
-	gcc -m32 -g -c $<
+	$(CC) -m32 -g -c $<
 
 NIMSRC	= main.nim
 NIMOBJS	= nimcache/*.o
@@ -11,16 +13,25 @@ TARGET	= test
 run:$(TARGET)
 	./$(TARGET)
 
+harib:
+	make hrbnim
+
 clean:
 	rm -rf $(OBJS)
-	rm -rf $(LNIMOBJS)
+	make -C libnim clean
 
 $(TARGET):$(OBJS)
-	gcc -m32 -o $@ $^ -nostdlib -lgcc
+	$(CC) -m32 -o $@ $^ -nostdlib -lgcc
 
 entry.o : nimcache/main.h
 
-$(NIMOBJS) nimcache/main.h :$(NIMSRC)
+$(NIMOBJS):
+	make nim
+
+nimcache/main.h:
+	make nim
+
+nim:$(NIMSRC)
 	nim c --cpu:i386 -t:-m32 --noMain --noLinking --passC:"-g -Ilibnim" -d:release --header:main.h $(NIMSRC)
 
 libnim/libnim.a:
