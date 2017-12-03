@@ -1,3 +1,3 @@
-proc print_str(str: cstring) {.header: "libnim.h", importc: "print_str"}
+proc puts(str: cstring) {.header: "libnim.h", importc: "puts"}
 
-print_str("hello")
+puts("hello")

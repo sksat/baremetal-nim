@@ -1,1 +1,1 @@
-int print_str(char *str);
+int puts(char *str);
