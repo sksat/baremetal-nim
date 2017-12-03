@@ -1,8 +1,8 @@
 %.o:%.S
-	as -c $< -o $(<:.S=.o)
+	as --32 -c $< -o $(<:.S=.o)
 
 %.o:%.c
-	gcc -c $< -o $(<:.c=.o)
+	gcc -m32 -g -c $< -o $(<:.c=.o)
 
 all:
 	make libnim.a

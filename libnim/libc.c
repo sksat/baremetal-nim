@@ -20,3 +20,8 @@ void __stack_chk_fail(void)
 #endif
 	while(1);
 }
+
+__attribute__((noreturn))
+void __stack_chk_fail_local(void){
+	while(1);
+}
