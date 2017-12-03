@@ -2,7 +2,7 @@
 	gcc -m32 -g -c $<
 
 NIMSRC	= main.nim
-NIMOBJS	= nimcache/main.o nimcache/stdlib_system.o
+NIMOBJS	= nimcache/*.o
 LNIMOBJS= libnim/print.o
 OBJS	= $(NIMOBJS) libnim/libnim.a entry.o
 
@@ -16,7 +16,7 @@ clean:
 	rm -rf $(LNIMOBJS)
 
 $(TARGET):$(OBJS)
-	gcc -m32 -o $@ $^ -nostdlib
+	gcc -m32 -o $@ $^ -nostdlib -lgcc
 
 entry.o : nimcache/main.h
 

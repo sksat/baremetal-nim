@@ -1,6 +1,6 @@
 #include "nimcache/main.h"
 
-int _start(){
+void _start(){
 	NimMain();
-	return 0;
+	return;
 }
